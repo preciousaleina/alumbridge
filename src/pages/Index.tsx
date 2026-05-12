@@ -37,7 +37,7 @@ export default function Index() {
                 <span className="relative inline-block">
                   The Future
                   {/* script accent */}
-                  <span className="absolute -right-2 -top-6 sm:-top-10 font-script text-white/90 text-5xl sm:text-7xl rotate-[-8deg] normal-case tracking-normal" style={{ fontFamily: "Caveat, cursive", textTransform: "none" }}>
+                  <span className="absolute -right-4 -top-5 sm:-right-2 sm:-top-10 z-10 font-script text-white/95 text-5xl sm:text-7xl rotate-[-8deg] normal-case tracking-normal leading-none" style={{ fontFamily: "Satisfy, cursive", textTransform: "none" }}>
                     bridge
                   </span>
                 </span>
