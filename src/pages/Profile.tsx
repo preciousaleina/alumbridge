@@ -18,12 +18,18 @@ export default function Profile() {
   useEffect(() => {
     (async () => {
       if (!user) return;
-      const { data } = await supabase
+      const { data: reqs } = await supabase
         .from("mentorship_requests")
-        .select("*, student:profiles!mentorship_requests_student_id_fkey(full_name)")
+        .select("*")
         .or(`alumni_id.eq.${user.id},student_id.eq.${user.id}`)
         .order("created_at", { ascending: false });
-      setRequests(data ?? []);
+      const list = reqs ?? [];
+      const ids = Array.from(new Set(list.map((r: any) => r.student_id)));
+      const { data: profs } = ids.length
+        ? await supabase.from("profiles").select("id, full_name").in("id", ids)
+        : { data: [] };
+      const nameById: Record<string, string> = Object.fromEntries((profs ?? []).map((p: any) => [p.id, p.full_name]));
+      setRequests(list.map((r: any) => ({ ...r, student: { full_name: nameById[r.student_id] } })));
     })();
   }, [user]);
 
