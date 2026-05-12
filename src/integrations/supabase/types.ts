@@ -14,196 +14,26 @@ export type Database = {
   }
   public: {
     Tables: {
-      events: {
-        Row: {
-          cover_url: string | null
-          created_at: string
-          created_by: string
-          description: string | null
-          event_date: string
-          id: string
-          location: string | null
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          cover_url?: string | null
-          created_at?: string
-          created_by: string
-          description?: string | null
-          event_date: string
-          id?: string
-          location?: string | null
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          cover_url?: string | null
-          created_at?: string
-          created_by?: string
-          description?: string | null
-          event_date?: string
-          id?: string
-          location?: string | null
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      jobs: {
-        Row: {
-          apply_url: string | null
-          company: string
-          created_at: string
-          description: string
-          id: string
-          job_type: string
-          location: string | null
-          posted_by: string
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          apply_url?: string | null
-          company: string
-          created_at?: string
-          description: string
-          id?: string
-          job_type?: string
-          location?: string | null
-          posted_by: string
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          apply_url?: string | null
-          company?: string
-          created_at?: string
-          description?: string
-          id?: string
-          job_type?: string
-          location?: string | null
-          posted_by?: string
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      mentorship_requests: {
-        Row: {
-          alumni_id: string
-          created_at: string
-          id: string
-          message: string
-          status: string
-          student_id: string
-          updated_at: string
-        }
-        Insert: {
-          alumni_id: string
-          created_at?: string
-          id?: string
-          message: string
-          status?: string
-          student_id: string
-          updated_at?: string
-        }
-        Update: {
-          alumni_id?: string
-          created_at?: string
-          id?: string
-          message?: string
-          status?: string
-          student_id?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      messages: {
-        Row: {
-          content: string
-          created_at: string
-          id: string
-          role: Database["public"]["Enums"]["message_role"]
-          session_id: string
-          user_id: string
-        }
-        Insert: {
-          content: string
-          created_at?: string
-          id?: string
-          role: Database["public"]["Enums"]["message_role"]
-          session_id: string
-          user_id: string
-        }
-        Update: {
-          content?: string
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["message_role"]
-          session_id?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "messages_session_id_fkey"
-            columns: ["session_id"]
-            isOneToOne: false
-            referencedRelation: "sessions"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       profiles: {
         Row: {
           avatar_url: string | null
-          bio: string | null
-          company: string | null
-          course: string | null
           created_at: string
-          current_position: string | null
           display_name: string | null
-          email: string | null
-          full_name: string | null
-          graduation_year: number | null
           id: string
-          linkedin: string | null
-          location: string | null
-          role: string
           updated_at: string
         }
         Insert: {
           avatar_url?: string | null
-          bio?: string | null
-          company?: string | null
-          course?: string | null
           created_at?: string
-          current_position?: string | null
           display_name?: string | null
-          email?: string | null
-          full_name?: string | null
-          graduation_year?: number | null
           id: string
-          linkedin?: string | null
-          location?: string | null
-          role?: string
           updated_at?: string
         }
         Update: {
           avatar_url?: string | null
-          bio?: string | null
-          company?: string | null
-          course?: string | null
           created_at?: string
-          current_position?: string | null
           display_name?: string | null
-          email?: string | null
-          full_name?: string | null
-          graduation_year?: number | null
           id?: string
-          linkedin?: string | null
-          location?: string | null
-          role?: string
           updated_at?: string
         }
         Relationships: []
@@ -289,7 +119,6 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
-      message_role: "user" | "assistant" | "system"
       project_type: "web" | "mobile"
       session_status:
         | "IDLE"
@@ -429,7 +258,6 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
-      message_role: ["user", "assistant", "system"],
       project_type: ["web", "mobile"],
       session_status: [
         "IDLE",
