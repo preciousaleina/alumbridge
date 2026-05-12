@@ -37,7 +37,7 @@ export default function Index() {
                 <span className="relative inline-block">
                   The Future
                   {/* script accent */}
-                  <span className="absolute -right-2 -top-6 sm:-top-10 font-script text-white/90 text-5xl sm:text-7xl rotate-[-8deg] normal-case tracking-normal" style={{ fontFamily: "Caveat, cursive", textTransform: "none" }}>
+                  <span className="absolute -right-4 -top-5 sm:-right-2 sm:-top-10 z-10 font-script text-white/95 text-5xl sm:text-7xl rotate-[-8deg] normal-case tracking-normal leading-none" style={{ fontFamily: "Satisfy, cursive", textTransform: "none" }}>
                     bridge
                   </span>
                 </span>
@@ -114,7 +114,7 @@ export default function Index() {
         <div className="mx-auto max-w-7xl px-6 py-24">
           <div className="text-center mb-16">
             <span className="text-sm font-bold uppercase tracking-[0.2em] text-primary">How it works</span>
-            <h2 className="mt-3 text-4xl sm:text-6xl font-display">Three steps. <span className="font-script normal-case text-primary" style={{ fontFamily: "Caveat, cursive", textTransform: "none" }}>that's it.</span></h2>
+            <h2 className="mt-3 text-4xl sm:text-6xl font-display">Three steps. <span className="font-script normal-case text-primary" style={{ fontFamily: "Satisfy, cursive", textTransform: "none" }}>that's it.</span></h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <Step n="01" title="Create your profile" body="Sign up with your university email, add your graduation year, course and where you are now." />
@@ -164,7 +164,7 @@ export default function Index() {
             <div className="max-w-2xl">
               <h3 className="text-white font-display text-4xl sm:text-6xl">
                 Bridge the gap.<br />
-                <span className="font-script normal-case text-white/90" style={{ fontFamily: "Caveat, cursive", textTransform: "none" }}>start today.</span>
+                <span className="font-script normal-case text-white/90" style={{ fontFamily: "Satisfy, cursive", textTransform: "none" }}>start today.</span>
               </h3>
               <p className="mt-4 text-white/85 text-lg">Free for life. Built by graduates, for graduates.</p>
             </div>

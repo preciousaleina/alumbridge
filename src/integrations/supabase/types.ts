@@ -16,37 +16,37 @@ export type Database = {
     Tables: {
       events: {
         Row: {
-          cover_url: string | null
-          created_at: string
+          created_at: string | null
           created_by: string
           description: string | null
           event_date: string
           id: string
           location: string | null
+          max_attendees: number | null
           title: string
-          updated_at: string
+          updated_at: string | null
         }
         Insert: {
-          cover_url?: string | null
-          created_at?: string
+          created_at?: string | null
           created_by: string
           description?: string | null
           event_date: string
           id?: string
           location?: string | null
+          max_attendees?: number | null
           title: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Update: {
-          cover_url?: string | null
-          created_at?: string
+          created_at?: string | null
           created_by?: string
           description?: string | null
           event_date?: string
           id?: string
           location?: string | null
+          max_attendees?: number | null
           title?: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -54,105 +54,70 @@ export type Database = {
         Row: {
           apply_url: string | null
           company: string
-          created_at: string
+          created_at: string | null
           description: string
           id: string
-          job_type: string
+          job_type: string | null
           location: string | null
           posted_by: string
           title: string
-          updated_at: string
+          updated_at: string | null
         }
         Insert: {
           apply_url?: string | null
           company: string
-          created_at?: string
+          created_at?: string | null
           description: string
           id?: string
-          job_type?: string
+          job_type?: string | null
           location?: string | null
           posted_by: string
           title: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Update: {
           apply_url?: string | null
           company?: string
-          created_at?: string
+          created_at?: string | null
           description?: string
           id?: string
-          job_type?: string
+          job_type?: string | null
           location?: string | null
           posted_by?: string
           title?: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
       mentorship_requests: {
         Row: {
           alumni_id: string
-          created_at: string
+          created_at: string | null
           id: string
           message: string
-          status: string
+          status: string | null
           student_id: string
-          updated_at: string
+          updated_at: string | null
         }
         Insert: {
           alumni_id: string
-          created_at?: string
+          created_at?: string | null
           id?: string
           message: string
-          status?: string
+          status?: string | null
           student_id: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Update: {
           alumni_id?: string
-          created_at?: string
+          created_at?: string | null
           id?: string
           message?: string
-          status?: string
+          status?: string | null
           student_id?: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Relationships: []
-      }
-      messages: {
-        Row: {
-          content: string
-          created_at: string
-          id: string
-          role: Database["public"]["Enums"]["message_role"]
-          session_id: string
-          user_id: string
-        }
-        Insert: {
-          content: string
-          created_at?: string
-          id?: string
-          role: Database["public"]["Enums"]["message_role"]
-          session_id: string
-          user_id: string
-        }
-        Update: {
-          content?: string
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["message_role"]
-          session_id?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "messages_session_id_fkey"
-            columns: ["session_id"]
-            isOneToOne: false
-            referencedRelation: "sessions"
-            referencedColumns: ["id"]
-          },
-        ]
       }
       profiles: {
         Row: {
@@ -169,7 +134,7 @@ export type Database = {
           id: string
           linkedin: string | null
           location: string | null
-          role: string
+          role: string | null
           updated_at: string
         }
         Insert: {
@@ -186,7 +151,7 @@ export type Database = {
           id: string
           linkedin?: string | null
           location?: string | null
-          role?: string
+          role?: string | null
           updated_at?: string
         }
         Update: {
@@ -203,53 +168,8 @@ export type Database = {
           id?: string
           linkedin?: string | null
           location?: string | null
-          role?: string
+          role?: string | null
           updated_at?: string
-        }
-        Relationships: []
-      }
-      sessions: {
-        Row: {
-          created_at: string
-          description: string | null
-          id: string
-          last_message_at: string | null
-          name: string
-          project_type: Database["public"]["Enums"]["project_type"]
-          repository: string | null
-          sandbox_id: string | null
-          status: Database["public"]["Enums"]["session_status"]
-          tunnel_url: string | null
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          description?: string | null
-          id?: string
-          last_message_at?: string | null
-          name?: string
-          project_type?: Database["public"]["Enums"]["project_type"]
-          repository?: string | null
-          sandbox_id?: string | null
-          status?: Database["public"]["Enums"]["session_status"]
-          tunnel_url?: string | null
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          description?: string | null
-          id?: string
-          last_message_at?: string | null
-          name?: string
-          project_type?: Database["public"]["Enums"]["project_type"]
-          repository?: string | null
-          sandbox_id?: string | null
-          status?: Database["public"]["Enums"]["session_status"]
-          tunnel_url?: string | null
-          updated_at?: string
-          user_id?: string
         }
         Relationships: []
       }
@@ -289,18 +209,6 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
-      message_role: "user" | "assistant" | "system"
-      project_type: "web" | "mobile"
-      session_status:
-        | "IDLE"
-        | "CREATING"
-        | "CLONING_REPO"
-        | "INSTALLING_DEPENDENCIES"
-        | "STARTING_DEV_SERVER"
-        | "CREATING_TUNNEL"
-        | "RUNNING"
-        | "ERROR"
-        | "STOPPED"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -429,19 +337,6 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
-      message_role: ["user", "assistant", "system"],
-      project_type: ["web", "mobile"],
-      session_status: [
-        "IDLE",
-        "CREATING",
-        "CLONING_REPO",
-        "INSTALLING_DEPENDENCIES",
-        "STARTING_DEV_SERVER",
-        "CREATING_TUNNEL",
-        "RUNNING",
-        "ERROR",
-        "STOPPED",
-      ],
     },
   },
 } as const
