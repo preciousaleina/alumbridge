@@ -100,7 +100,7 @@ export default function Auth() {
         <div className="relative text-white max-w-md">
           <h2 className="font-display text-5xl xl:text-7xl leading-[0.9]">
             Bridge<br />
-            <span className="font-script normal-case" style={{ fontFamily: "Caveat, cursive", textTransform: "none" }}>your</span><br />
+            <span className="font-script normal-case" style={{ fontFamily: "Satisfy, cursive", textTransform: "none" }}>your</span><br />
             future.
           </h2>
           <p className="mt-6 text-white/90 text-lg">Join 2,400+ graduates already here.</p>
