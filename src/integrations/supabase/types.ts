@@ -14,168 +14,125 @@ export type Database = {
   }
   public: {
     Tables: {
-      events: {
+      messages: {
         Row: {
-          created_at: string
-          description: string
-          event_date: string
-          id: string
-          image_url: string | null
-          location: string | null
-          posted_by: string
-          title: string
-        }
-        Insert: {
-          created_at?: string
-          description: string
-          event_date: string
-          id?: string
-          image_url?: string | null
-          location?: string | null
-          posted_by: string
-          title: string
-        }
-        Update: {
-          created_at?: string
-          description?: string
-          event_date?: string
-          id?: string
-          image_url?: string | null
-          location?: string | null
-          posted_by?: string
-          title?: string
-        }
-        Relationships: []
-      }
-      jobs: {
-        Row: {
-          apply_url: string | null
-          company: string
-          created_at: string
-          description: string
-          expires_at: string | null
-          id: string
-          job_type: Database["public"]["Enums"]["job_type"]
-          location: string | null
-          posted_by: string
-          title: string
-        }
-        Insert: {
-          apply_url?: string | null
-          company: string
-          created_at?: string
-          description: string
-          expires_at?: string | null
-          id?: string
-          job_type?: Database["public"]["Enums"]["job_type"]
-          location?: string | null
-          posted_by: string
-          title: string
-        }
-        Update: {
-          apply_url?: string | null
-          company?: string
-          created_at?: string
-          description?: string
-          expires_at?: string | null
-          id?: string
-          job_type?: Database["public"]["Enums"]["job_type"]
-          location?: string | null
-          posted_by?: string
-          title?: string
-        }
-        Relationships: []
-      }
-      mentorship_requests: {
-        Row: {
-          alumni_id: string
+          content: string
           created_at: string
           id: string
-          message: string
-          status: Database["public"]["Enums"]["mentorship_status"]
-          student_id: string
+          role: Database["public"]["Enums"]["message_role"]
+          session_id: string
+          user_id: string
         }
         Insert: {
-          alumni_id: string
+          content: string
           created_at?: string
           id?: string
-          message: string
-          status?: Database["public"]["Enums"]["mentorship_status"]
-          student_id: string
+          role: Database["public"]["Enums"]["message_role"]
+          session_id: string
+          user_id: string
         }
         Update: {
-          alumni_id?: string
+          content?: string
           created_at?: string
           id?: string
-          message?: string
-          status?: Database["public"]["Enums"]["mentorship_status"]
-          student_id?: string
+          role?: Database["public"]["Enums"]["message_role"]
+          session_id?: string
+          user_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "messages_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
           avatar_url: string | null
-          bio: string | null
-          company: string | null
-          course: string | null
           created_at: string
-          current_position: string | null
-          email: string | null
-          full_name: string
-          graduation_year: number | null
+          display_name: string | null
           id: string
-          linkedin: string | null
-          location: string | null
-          role: string
           updated_at: string
         }
         Insert: {
           avatar_url?: string | null
-          bio?: string | null
-          company?: string | null
-          course?: string | null
           created_at?: string
-          current_position?: string | null
-          email?: string | null
-          full_name?: string
-          graduation_year?: number | null
+          display_name?: string | null
           id: string
-          linkedin?: string | null
-          location?: string | null
-          role?: string
           updated_at?: string
         }
         Update: {
           avatar_url?: string | null
-          bio?: string | null
-          company?: string | null
-          course?: string | null
           created_at?: string
-          current_position?: string | null
-          email?: string | null
-          full_name?: string
-          graduation_year?: number | null
+          display_name?: string | null
           id?: string
-          linkedin?: string | null
-          location?: string | null
-          role?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      sessions: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          last_message_at: string | null
+          name: string
+          project_type: Database["public"]["Enums"]["project_type"]
+          repository: string | null
+          sandbox_id: string | null
+          status: Database["public"]["Enums"]["session_status"]
+          tunnel_url: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          last_message_at?: string | null
+          name?: string
+          project_type?: Database["public"]["Enums"]["project_type"]
+          repository?: string | null
+          sandbox_id?: string | null
+          status?: Database["public"]["Enums"]["session_status"]
+          tunnel_url?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          last_message_at?: string | null
+          name?: string
+          project_type?: Database["public"]["Enums"]["project_type"]
+          repository?: string | null
+          sandbox_id?: string | null
+          status?: Database["public"]["Enums"]["session_status"]
+          tunnel_url?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
       user_roles: {
         Row: {
+          created_at: string
           id: string
           role: Database["public"]["Enums"]["app_role"]
           user_id: string
         }
         Insert: {
+          created_at?: string
           id?: string
           role: Database["public"]["Enums"]["app_role"]
           user_id: string
         }
         Update: {
+          created_at?: string
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
@@ -196,9 +153,19 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "admin" | "alumni" | "student"
-      job_type: "full_time" | "part_time" | "internship" | "contract"
-      mentorship_status: "pending" | "accepted" | "declined"
+      app_role: "admin" | "moderator" | "user"
+      message_role: "user" | "assistant" | "system"
+      project_type: "web" | "mobile"
+      session_status:
+        | "IDLE"
+        | "CREATING"
+        | "CLONING_REPO"
+        | "INSTALLING_DEPENDENCIES"
+        | "STARTING_DEV_SERVER"
+        | "CREATING_TUNNEL"
+        | "RUNNING"
+        | "ERROR"
+        | "STOPPED"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -326,9 +293,20 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "alumni", "student"],
-      job_type: ["full_time", "part_time", "internship", "contract"],
-      mentorship_status: ["pending", "accepted", "declined"],
+      app_role: ["admin", "moderator", "user"],
+      message_role: ["user", "assistant", "system"],
+      project_type: ["web", "mobile"],
+      session_status: [
+        "IDLE",
+        "CREATING",
+        "CLONING_REPO",
+        "INSTALLING_DEPENDENCIES",
+        "STARTING_DEV_SERVER",
+        "CREATING_TUNNEL",
+        "RUNNING",
+        "ERROR",
+        "STOPPED",
+      ],
     },
   },
 } as const
