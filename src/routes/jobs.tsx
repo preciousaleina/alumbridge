@@ -87,7 +87,7 @@ function JobForm({ onDone, userId }: { onDone: () => void; userId: string }) {
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.from("jobs").insert({ ...form, posted_by: userId, apply_url: form.apply_url || null });
+    const { error } = await supabase.from("jobs").insert({ ...form, job_type: form.job_type as any, posted_by: userId, apply_url: form.apply_url || null });
     setLoading(false);
     if (error) toast.error(error.message);
     else { toast.success("Job posted!"); onDone(); }
