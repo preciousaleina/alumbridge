@@ -53,4 +53,4 @@ AlumBridge uses a high-contrast, youthful aesthetic designed to mirror the energ
 
 ---
 
-*Built with passion by Akankunda Precious Alena (Reg No 228 606) — Bridging the gap between today's students and tomorrow's leaders.*
+*Built with passion by Akankunda Precious Alena (Reg No 228 606) — Bridging the gap between today's students and tomorrow's leaders.* .
