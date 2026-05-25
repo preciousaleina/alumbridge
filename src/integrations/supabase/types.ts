@@ -16,37 +16,34 @@ export type Database = {
     Tables: {
       events: {
         Row: {
-          created_at: string | null
+          created_at: string
           created_by: string
           description: string | null
           event_date: string
           id: string
           location: string | null
-          max_attendees: number | null
           title: string
-          updated_at: string | null
+          updated_at: string
         }
         Insert: {
-          created_at?: string | null
+          created_at?: string
           created_by: string
           description?: string | null
           event_date: string
           id?: string
           location?: string | null
-          max_attendees?: number | null
           title: string
-          updated_at?: string | null
+          updated_at?: string
         }
         Update: {
-          created_at?: string | null
+          created_at?: string
           created_by?: string
           description?: string | null
           event_date?: string
           id?: string
           location?: string | null
-          max_attendees?: number | null
           title?: string
-          updated_at?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
@@ -54,68 +51,68 @@ export type Database = {
         Row: {
           apply_url: string | null
           company: string
-          created_at: string | null
+          created_at: string
           description: string
           id: string
-          job_type: string | null
+          job_type: string
           location: string | null
           posted_by: string
           title: string
-          updated_at: string | null
+          updated_at: string
         }
         Insert: {
           apply_url?: string | null
           company: string
-          created_at?: string | null
+          created_at?: string
           description: string
           id?: string
-          job_type?: string | null
+          job_type?: string
           location?: string | null
           posted_by: string
           title: string
-          updated_at?: string | null
+          updated_at?: string
         }
         Update: {
           apply_url?: string | null
           company?: string
-          created_at?: string | null
+          created_at?: string
           description?: string
           id?: string
-          job_type?: string | null
+          job_type?: string
           location?: string | null
           posted_by?: string
           title?: string
-          updated_at?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
       mentorship_requests: {
         Row: {
           alumni_id: string
-          created_at: string | null
+          created_at: string
           id: string
           message: string
-          status: string | null
+          status: string
           student_id: string
-          updated_at: string | null
+          updated_at: string
         }
         Insert: {
           alumni_id: string
-          created_at?: string | null
+          created_at?: string
           id?: string
           message: string
-          status?: string | null
+          status?: string
           student_id: string
-          updated_at?: string | null
+          updated_at?: string
         }
         Update: {
           alumni_id?: string
-          created_at?: string | null
+          created_at?: string
           id?: string
           message?: string
-          status?: string | null
+          status?: string
           student_id?: string
-          updated_at?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
@@ -127,14 +124,13 @@ export type Database = {
           course: string | null
           created_at: string
           current_position: string | null
-          display_name: string | null
           email: string | null
-          full_name: string | null
+          full_name: string
           graduation_year: number | null
           id: string
           linkedin: string | null
           location: string | null
-          role: string | null
+          role: string
           updated_at: string
         }
         Insert: {
@@ -144,14 +140,13 @@ export type Database = {
           course?: string | null
           created_at?: string
           current_position?: string | null
-          display_name?: string | null
           email?: string | null
-          full_name?: string | null
+          full_name?: string
           graduation_year?: number | null
           id: string
           linkedin?: string | null
           location?: string | null
-          role?: string | null
+          role?: string
           updated_at?: string
         }
         Update: {
@@ -161,33 +156,29 @@ export type Database = {
           course?: string | null
           created_at?: string
           current_position?: string | null
-          display_name?: string | null
           email?: string | null
-          full_name?: string | null
+          full_name?: string
           graduation_year?: number | null
           id?: string
           linkedin?: string | null
           location?: string | null
-          role?: string | null
+          role?: string
           updated_at?: string
         }
         Relationships: []
       }
       user_roles: {
         Row: {
-          created_at: string
           id: string
           role: Database["public"]["Enums"]["app_role"]
           user_id: string
         }
         Insert: {
-          created_at?: string
           id?: string
           role: Database["public"]["Enums"]["app_role"]
           user_id: string
         }
         Update: {
-          created_at?: string
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
@@ -208,7 +199,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      app_role: "admin" | "alumni" | "student"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -336,7 +327,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "moderator", "user"],
+      app_role: ["admin", "alumni", "student"],
     },
   },
 } as const
