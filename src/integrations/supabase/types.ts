@@ -14,201 +14,16 @@ export type Database = {
   }
   public: {
     Tables: {
-      events: {
-        Row: {
-          created_at: string | null
-          created_by: string
-          description: string | null
-          event_date: string
-          id: string
-          location: string | null
-          max_attendees: number | null
-          title: string
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          created_by: string
-          description?: string | null
-          event_date: string
-          id?: string
-          location?: string | null
-          max_attendees?: number | null
-          title: string
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          created_by?: string
-          description?: string | null
-          event_date?: string
-          id?: string
-          location?: string | null
-          max_attendees?: number | null
-          title?: string
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
-      jobs: {
-        Row: {
-          apply_url: string | null
-          company: string
-          created_at: string | null
-          description: string
-          id: string
-          job_type: string | null
-          location: string | null
-          posted_by: string
-          title: string
-          updated_at: string | null
-        }
-        Insert: {
-          apply_url?: string | null
-          company: string
-          created_at?: string | null
-          description: string
-          id?: string
-          job_type?: string | null
-          location?: string | null
-          posted_by: string
-          title: string
-          updated_at?: string | null
-        }
-        Update: {
-          apply_url?: string | null
-          company?: string
-          created_at?: string | null
-          description?: string
-          id?: string
-          job_type?: string | null
-          location?: string | null
-          posted_by?: string
-          title?: string
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
-      mentorship_requests: {
-        Row: {
-          alumni_id: string
-          created_at: string | null
-          id: string
-          message: string
-          status: string | null
-          student_id: string
-          updated_at: string | null
-        }
-        Insert: {
-          alumni_id: string
-          created_at?: string | null
-          id?: string
-          message: string
-          status?: string | null
-          student_id: string
-          updated_at?: string | null
-        }
-        Update: {
-          alumni_id?: string
-          created_at?: string | null
-          id?: string
-          message?: string
-          status?: string | null
-          student_id?: string
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
-      profiles: {
-        Row: {
-          avatar_url: string | null
-          bio: string | null
-          company: string | null
-          course: string | null
-          created_at: string
-          current_position: string | null
-          display_name: string | null
-          email: string | null
-          full_name: string | null
-          graduation_year: number | null
-          id: string
-          linkedin: string | null
-          location: string | null
-          role: string | null
-          updated_at: string
-        }
-        Insert: {
-          avatar_url?: string | null
-          bio?: string | null
-          company?: string | null
-          course?: string | null
-          created_at?: string
-          current_position?: string | null
-          display_name?: string | null
-          email?: string | null
-          full_name?: string | null
-          graduation_year?: number | null
-          id: string
-          linkedin?: string | null
-          location?: string | null
-          role?: string | null
-          updated_at?: string
-        }
-        Update: {
-          avatar_url?: string | null
-          bio?: string | null
-          company?: string | null
-          course?: string | null
-          created_at?: string
-          current_position?: string | null
-          display_name?: string | null
-          email?: string | null
-          full_name?: string | null
-          graduation_year?: number | null
-          id?: string
-          linkedin?: string | null
-          location?: string | null
-          role?: string | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      user_roles: {
-        Row: {
-          created_at: string
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -335,8 +150,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["admin", "moderator", "user"],
-    },
+    Enums: {},
   },
 } as const
