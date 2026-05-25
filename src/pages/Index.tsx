@@ -39,12 +39,6 @@ export default function Index() {
                 </span>
               </h1>
 
-              <div className="mt-8 flex items-center gap-3">
-                <span className="rounded-full bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-primary shadow-soft">
-                  Not Just A Diploma
-                </span>
-              </div>
-
               <p className="mt-8 max-w-2xl text-lg sm:text-xl text-white/90 leading-relaxed">
                 A centralized platform for graduates, students and the university — share jobs, host events, mentor the next generation, and stay connected for life.
               </p>
