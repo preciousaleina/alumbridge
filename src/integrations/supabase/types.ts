@@ -14,16 +14,192 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      events: {
+        Row: {
+          created_at: string
+          created_by: string
+          description: string | null
+          event_date: string
+          id: string
+          location: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          description?: string | null
+          event_date: string
+          id?: string
+          location?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          event_date?: string
+          id?: string
+          location?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      jobs: {
+        Row: {
+          apply_url: string | null
+          company: string
+          created_at: string
+          description: string
+          id: string
+          job_type: string
+          location: string | null
+          posted_by: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          apply_url?: string | null
+          company: string
+          created_at?: string
+          description: string
+          id?: string
+          job_type?: string
+          location?: string | null
+          posted_by: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          apply_url?: string | null
+          company?: string
+          created_at?: string
+          description?: string
+          id?: string
+          job_type?: string
+          location?: string | null
+          posted_by?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      mentorship_requests: {
+        Row: {
+          alumni_id: string
+          created_at: string
+          id: string
+          message: string
+          status: string
+          student_id: string
+          updated_at: string
+        }
+        Insert: {
+          alumni_id: string
+          created_at?: string
+          id?: string
+          message: string
+          status?: string
+          student_id: string
+          updated_at?: string
+        }
+        Update: {
+          alumni_id?: string
+          created_at?: string
+          id?: string
+          message?: string
+          status?: string
+          student_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          company: string | null
+          course: string | null
+          created_at: string
+          current_position: string | null
+          email: string | null
+          full_name: string
+          graduation_year: number | null
+          id: string
+          linkedin: string | null
+          location: string | null
+          role: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          company?: string | null
+          course?: string | null
+          created_at?: string
+          current_position?: string | null
+          email?: string | null
+          full_name?: string
+          graduation_year?: number | null
+          id: string
+          linkedin?: string | null
+          location?: string | null
+          role?: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          company?: string | null
+          course?: string | null
+          created_at?: string
+          current_position?: string | null
+          email?: string | null
+          full_name?: string
+          graduation_year?: number | null
+          id?: string
+          linkedin?: string | null
+          location?: string | null
+          role?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "alumni" | "student"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +326,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "alumni", "student"],
+    },
   },
 } as const
