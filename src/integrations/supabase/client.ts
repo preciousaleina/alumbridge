@@ -2,6 +2,35 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
+const xhrFetch: typeof fetch = (input, init = {}) => {
+  if (typeof XMLHttpRequest === 'undefined') return fetch(input, init);
+
+  return new Promise((resolve, reject) => {
+    const request = input instanceof Request ? input : null;
+    const url = typeof input === 'string' || input instanceof URL ? input.toString() : input.url;
+    const xhr = new XMLHttpRequest();
+    const headers = new Headers(request?.headers);
+
+    new Headers(init.headers).forEach((value, key) => headers.set(key, value));
+    xhr.open(init.method || request?.method || 'GET', url, true);
+    xhr.withCredentials = init.credentials === 'include';
+    headers.forEach((value, key) => xhr.setRequestHeader(key, value));
+
+    xhr.onload = () => {
+      const responseHeaders = new Headers();
+      xhr.getAllResponseHeaders().trim().split(/[\r\n]+/).forEach((line) => {
+        const [key, ...parts] = line.split(': ');
+        if (key) responseHeaders.append(key, parts.join(': '));
+      });
+      resolve(new Response(xhr.responseText, { status: xhr.status, statusText: xhr.statusText, headers: responseHeaders }));
+    };
+    xhr.onerror = () => reject(new TypeError('Network request failed'));
+    xhr.onabort = () => reject(new DOMException('Aborted', 'AbortError'));
+    init.signal?.addEventListener('abort', () => xhr.abort(), { once: true });
+    xhr.send((init.body as XMLHttpRequestBodyInit | null) ?? null);
+  });
+};
+
 function createSupabaseClient() {
   // Use import.meta.env for client-side (Vite build-time replacement)
   // Fall back to process.env for SSR (server-side rendering)
@@ -20,7 +49,7 @@ function createSupabaseClient() {
 
   return createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     global: {
-      fetch: (...args) => globalThis.fetch(...args),
+      fetch: xhrFetch,
     },
     auth: {
       storage: typeof window !== 'undefined' ? localStorage : undefined,
