@@ -37,40 +37,40 @@
 
 :root {
   --radius: 1rem;
-  /* AlumBridge — Bold coral-red on near-black */
-  --background: oklch(0.13 0.01 30);          /* near-black with warm tint */
-  --foreground: oklch(0.97 0.01 80);          /* cream white */
-  --ink: oklch(0.13 0.01 30);
-  --cream: oklch(0.96 0.02 80);
+  /* Cavendish University — Blue & White */
+  --background: oklch(0.99 0.005 250);         /* white */
+  --foreground: oklch(0.18 0.04 250);          /* deep navy ink */
+  --ink: oklch(0.18 0.04 250);
+  --cream: oklch(0.99 0.005 250);
 
-  --card: oklch(0.18 0.015 30);
-  --card-foreground: oklch(0.97 0.01 80);
-  --popover: oklch(0.18 0.015 30);
-  --popover-foreground: oklch(0.97 0.01 80);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 250);
 
-  --primary: oklch(0.66 0.22 25);              /* coral red ~#FF4438 */
+  --primary: oklch(0.42 0.17 255);             /* Cavendish blue ~#0B3D91 */
   --primary-foreground: oklch(0.99 0 0);
 
-  --secondary: oklch(0.22 0.015 30);
-  --secondary-foreground: oklch(0.97 0.01 80);
+  --secondary: oklch(0.95 0.02 250);
+  --secondary-foreground: oklch(0.2 0.05 255);
 
-  --muted: oklch(0.22 0.01 30);
-  --muted-foreground: oklch(0.7 0.01 60);
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.45 0.03 255);
 
-  --accent: oklch(0.66 0.22 25);
+  --accent: oklch(0.42 0.17 255);
   --accent-foreground: oklch(0.99 0 0);
 
   --destructive: oklch(0.6 0.23 27);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.28 0.01 30);
-  --input: oklch(0.22 0.01 30);
-  --ring: oklch(0.66 0.22 25);
+  --border: oklch(0.9 0.015 250);
+  --input: oklch(0.97 0.01 250);
+  --ring: oklch(0.42 0.17 255);
 
-  --gradient-coral: linear-gradient(135deg, oklch(0.7 0.22 25), oklch(0.62 0.24 20));
-  --gradient-radial-glow: radial-gradient(circle at 30% 20%, oklch(0.66 0.22 25 / 0.25), transparent 50%);
-  --shadow-coral: 0 20px 60px -20px oklch(0.66 0.22 25 / 0.6);
-  --shadow-soft: 0 4px 24px -8px oklch(0 0 0 / 0.6);
+  --gradient-coral: linear-gradient(135deg, oklch(0.5 0.18 255), oklch(0.35 0.16 260));
+  --gradient-radial-glow: radial-gradient(circle at 30% 20%, oklch(0.42 0.17 255 / 0.25), transparent 50%);
+  --shadow-coral: 0 20px 60px -20px oklch(0.42 0.17 255 / 0.5);
+  --shadow-soft: 0 4px 24px -8px oklch(0 0 0 / 0.15);
 }
 
 @layer base {
