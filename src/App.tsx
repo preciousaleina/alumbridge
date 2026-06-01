@@ -10,6 +10,7 @@ import Jobs from "@/pages/Jobs";
 import Events from "@/pages/Events";
 import Profile from "@/pages/Profile";
 import NotFound from "@/pages/NotFound";
+import { AppShell } from "@/components/AppShell";
 import { AnimatePresence, motion } from "framer-motion";
 
 function Protected({ children }: { children: React.ReactNode }) {
@@ -17,7 +18,7 @@ function Protected({ children }: { children: React.ReactNode }) {
   const loc = useLocation();
   if (loading) return <div className="flex min-h-screen items-center justify-center text-muted-foreground">Loading…</div>;
   if (!user) return <Navigate to="/auth" replace state={{ from: loc.pathname }} />;
-  return <>{children}</>;
+  return <AppShell>{children}</AppShell>;
 }
 
 export default function App() {
